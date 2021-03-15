@@ -1,16 +1,20 @@
 class MessagesController < ApplicationController
   def new
-    @post = Post.new
+    @message = Message.new
   end
 
-  def Create
-    post = Post.create!(post_params)
+  def create
+    message = Message.create!(message_params)
     redirect_to post
+  end
+
+  def index
+    message = Message.order(:id)
   end
 
   private
 
-  def post_params
-    params.require(:post).permit(:title. :content)
+  def message_params
+    params.require(:message).permit(:title, :content)
   end
 end
