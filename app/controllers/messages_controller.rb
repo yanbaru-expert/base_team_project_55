@@ -4,12 +4,16 @@ class MessagesController < ApplicationController
   end
 
   def create
-    message = Message.create!(message_params)
-    redirect_to post
+    Message.create!(message_params)
+    redirect_to action: "index"
   end
 
   def index
-    message = Message.order(:id)
+    @messages = Message.order(id: :asc)
+  end
+
+  def show
+    @message = Message.find(params[:id])
   end
 
   private
