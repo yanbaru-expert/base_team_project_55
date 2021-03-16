@@ -26,6 +26,12 @@ class MessagesController < ApplicationController
     redirect_to action: "index"
   end
 
+  def destroy
+    message = Message.find(params[:id])
+    message.destroy!
+    redirect_to action: "new"
+  end
+
   private
 
   def message_params
